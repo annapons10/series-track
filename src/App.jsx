@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useSearch } from "./hooks/useSearch";
 import { Series } from './components/Series'
 import { useMovies } from "./hooks/useMovies";
+import debounce from "just-debounce-it";
+import './style/style.css'; 
 
 export function App(){
+    //Saber si ha hecho click y quiere las series ordenadas por año: 
+    const [sort, setSort] = useState(false); 
     //La búsqueda:
     const [search, setSearch] = useState('');
     //Si la búsqueda es correcta o no:
@@ -11,9 +15,21 @@ export function App(){
     //Recojo el custom hook:
     const { errorSearch, verificarBusqueda } = useSearch();
     //Recojo el custom hook para las series: 
-    const { seriesEncontradas, getMovies } = useMovies();
-    
+    const { seriesEncontradas, getMovies } = useMovies({ sort });
 
+    console.log(`Estas son las series encontradaS: ${seriesEncontradas}`);
+
+    
+    //Creo un debounce para que no haga tantas llamadas a la API, se espere un poco "el usuario pueda buscar": 
+    const debounceGetMovies = useCallback (
+        debounce(search => {
+            console.log("entro a llamar");
+            //Buscar series...
+            getMovies({ search }); 
+        }, 2000),
+        //uso la dependencia de getMovies para siempre usar su versión actualizada, cuando cambia, se vuelve a crear la función (si tiene estados dentro): 
+        []
+    );
 
     //Puedo buscar la película mientras se escribe y al darle click a buscar / Puedo validar campos mientras y al finalizar: 
     //Método que maneja el envío del formulario, se podrían validar los campos: 
@@ -34,20 +50,30 @@ export function App(){
         setSearch(value);
         console.log(value);
         //Buscar series...
+        debounceGetMovies(value);
+    }
+
+    //Para saber si ha hecho click y se quiere ordenar:
+    const handleSort = () => {
+        //Si se hace click, cambia de false a true y al revés: 
+        setSort(!sort); 
     }
 
 
     return (
-        <div>
+        <div className="page">
             <header>
-                <h1>Series Track</h1>
-                <form onSubmit={ handleSubmit }>
+                <h1 className="h1">Series Track</h1>
+                <form onSubmit={ handleSubmit } className="form">
                     <input type="text" name="query" onChange={ hanldeChange } placeholder="Shameless, Breaking Bad..."/>
+                    
                     <button>Buscar</button>
+                    <label htmlFor="orderYear">Ordenar serie por año</label>
+                    <input onClick={ handleSort } id="orderYear" type="checkbox" />
                 </form>
                 { errorSearch && ( <p> { errorSearch } </p>)}
             </header>
-            <main>
+            <main className="main">
                 <Series seriesEncontradas = { seriesEncontradas } />
             </main>
 

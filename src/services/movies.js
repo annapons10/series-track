@@ -4,7 +4,7 @@ export function buscarSeries ({ search }){
 
     console.log("Entro a buscar las series..... ");
 
-    fetch(`https://api.themoviedb.org/3/search/tv?api_key=58a55524372506878833e839bc8881f0&query=${search}`)
+    return fetch(`https://api.themoviedb.org/3/search/tv?api_key=58a55524372506878833e839bc8881f0&query=${search}`)
     .then(res => res.json())
     .then(data => {
         //Me aseguro de que hay datos: 
@@ -23,7 +23,8 @@ export function buscarSeries ({ search }){
             date: serie.first_air_date
         }));
     })
-    .catch(error)
-        throw new Error('Error fetching movies'); 
-    
+    .catch(error => {
+        console.error(error); // para debug
+        throw new Error('Error fetching movies');
+    });
 }

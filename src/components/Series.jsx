@@ -5,9 +5,9 @@ export function Series ({ seriesEncontradas }) {
 
     return(
         
-        <ul>
+        <ul className='movies'>
             { seriesEncontradas?.map((serie) => (
-                <li key={ serie.id }>
+                <li key={ serie.id }  className='movie'>
                     <h3>{ serie.name }</h3>
                     <p>{ serie.date }</p>
                     <img 
