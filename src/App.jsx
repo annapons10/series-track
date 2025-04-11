@@ -15,7 +15,7 @@ export function App(){
     //Recojo el custom hook:
     const { errorSearch, verificarBusqueda } = useSearch();
     //Recojo el custom hook para las series: 
-    const { seriesEncontradas, getMovies } = useMovies({ sort });
+    const { seriesEncontradas, getMovies, handleButtonInfo, serieSelected } = useMovies({ sort });
 
     console.log(`Estas son las series encontradaS: ${seriesEncontradas}`);
 
@@ -74,7 +74,8 @@ export function App(){
                 { errorSearch && ( <p> { errorSearch } </p>)}
             </header>
             <main className="main">
-                <Series seriesEncontradas = { seriesEncontradas } />
+                <Series seriesEncontradas = { seriesEncontradas } handleButtonInfo = { handleButtonInfo }
+                serieSelected = { serieSelected }/>
             </main>
 
         </div>

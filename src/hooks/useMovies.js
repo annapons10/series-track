@@ -7,6 +7,9 @@ export function useMovies ({ sort }) {
     const [seriesEncontradas, setSeriesEncontradas] = useState([]); 
     //Uso referencia para no llamar a buscar la misma película dos veces: 
     const previousSearch = useRef('');
+    //Estado para saber que película es la que requiere el modal para abrir + info y poder puntuarla:
+    const [serieSelected, setSerieSelected] = useState(); 
+
     //Cuando cambia el search, hago el fetch:
     const getMovies = async ( { search }) => {
         if(search === previousSearch.current) return; 
@@ -35,8 +38,14 @@ export function useMovies ({ sort }) {
             })  : seriesEncontradas; 
     }, [sort, seriesEncontradas]); 
 
+    //Función para el click del button de la serie y mostrar modal con más info :
+    const handleButtonInfo = (id) => {
+        //Guardo el id de la película click en el estado y la retorno:
+       const serieSeleccionada = seriesEncontradas.find((serie) => serie.id === id );
+        setSerieSelected(serieSeleccionada);
+    }
 
     
-    return { seriesEncontradas: valueSeries, getMovies }
+    return { seriesEncontradas: valueSeries, getMovies, handleButtonInfo, serieSelected }
 
 }

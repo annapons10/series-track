@@ -20,7 +20,10 @@ export function buscarSeries ({ search }){
             id: serie.id,
             name: serie.name,
             poster: serie.poster_path, 
-            date: serie.first_air_date
+            date: serie.first_air_date,
+            average: serie.vote_average,
+            count: serie.vote_count, 
+            overview: serie.overview
         }));
     })
     .catch(error => {

@@ -10,6 +10,10 @@ html{
     text-align: center;
 }
 
+p{
+    color: #ffffff;
+}
+
 .page {
     background-color: rgb(32, 45, 54);
     display: flex;
@@ -51,4 +55,38 @@ html{
     margin: 8px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
+}
+
+.modal-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(22, 22, 23);
+    text-align: center;
+    gap: 10px;
+    color: rgb(238, 231, 231);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+ 
+}
+
+.modal-container .p-overview{
+    line-height: 1.7;
+    text-align: justify;
+    padding: 10px;
+}
+
+.modal-container .p-votos {
+    font-size: 1.5rem;
+    background-color: rgb(66, 66, 78);
+    width: 50%;
+    justify-self: center;
+    
+}
+
+.btn-close-modal{
+   color: #ffffff;
+   font-size: 1.5rem;
+    margin-left: 20px;
+   background-color: rgb(100, 98, 98);
 }
