@@ -9,17 +9,14 @@ export function App(){
     //Saber si ha hecho click y quiere las series ordenadas por año: 
     const [sort, setSort] = useState(false); 
     //La búsqueda:
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState(''); 
     //Si la búsqueda es correcta o no:
     const [isValid, setIsValid] = useState(false);
     //Recojo el custom hook:
     const { errorSearch, verificarBusqueda } = useSearch();
     //Recojo el custom hook para las series: 
-    const { seriesEncontradas, getMovies, handleButtonInfo, serieSelected } = useMovies({ sort });
+    const { seriesEncontradas, getMovies, handleButtonInfo, serieSelected, errorTitle } = useMovies({ sort });
 
-    console.log(`Estas son las series encontradaS: ${seriesEncontradas}`);
-
-    
     //Creo un debounce para que no haga tantas llamadas a la API, se espere un poco "el usuario pueda buscar": 
     const debounceGetMovies = useCallback (
         debounce(search => {
@@ -71,7 +68,9 @@ export function App(){
                     <label htmlFor="orderYear">Ordenar serie por año</label>
                     <input onClick={ handleSort } id="orderYear" type="checkbox" />
                 </form>
+                {/* Muestro los errores si existen:  */}
                 { errorSearch && ( <p> { errorSearch } </p>)}
+                { errorTitle && ( <p> { errorTitle } </p>)}
             </header>
             <main className="main">
                 <Series seriesEncontradas = { seriesEncontradas } handleButtonInfo = { handleButtonInfo }

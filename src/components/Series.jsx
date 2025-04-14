@@ -1,14 +1,18 @@
-import { useState } from 'react' 
+import { useState,  useEffect } from 'react'; 
+import Rating from 'react-rating';
+import { useRating } from '../hooks/useRating';
 
 export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) {
    //Estados para controlar el modal:
    const [isModalOpen, setIsModalOpen] = useState(false);
-
+   //Custom hook para las clasificaciones:
+   const { rating, handleRatingChange } = useRating({ serieSelected });
+   
     return(
-        <>
+        <> 
             <ul className='movies'>
                 { seriesEncontradas?.map((serie) => (
-                    <button key={ serie.id } type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalSerie1" onClick={ () => {  
+                    <button key={ serie.id } type="button"  className='button-serie' data-bs-toggle="modal" data-bs-target="#modalSerie1" onClick={ () => {  
                         handleButtonInfo(serie.id) 
                         setIsModalOpen(true) } } >
                         <li  className='movie'>
@@ -48,7 +52,8 @@ export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) 
                             <p> Votos: { serieSelected.count } </p>
 
                             {/* Las estrellas para votar. */}
-                            
+                            {/* Se verá lo que hay en estado gestionado por el useEffect, cada vez que cambie, se llamará al método para actualizar el localStorage:  */}  
+                            <Rating initialRating={ rating } onChange={ handleRatingChange }/>
                         </div> 
                         </div>
                     </div>
@@ -61,4 +66,4 @@ export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) 
       
       
     )
-}
+} 

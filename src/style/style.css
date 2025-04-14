@@ -8,6 +8,7 @@ html{
 
 .h1 {
     text-align: center;
+    padding: 20px;
 }
 
 p{
@@ -22,6 +23,7 @@ p{
     justify-content: center;
     width: 100%;
     max-width: 800px;
+    gap: 50px;
 }
 
 .form{
@@ -89,4 +91,8 @@ p{
    font-size: 1.5rem;
     margin-left: 20px;
    background-color: rgb(100, 98, 98);
+}
+
+.button-serie {
+
 }
