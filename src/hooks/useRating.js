@@ -6,8 +6,7 @@ export function useRating ({ serieSelected }) {
 
     //Quiero saber si existe una puntuación cuando ya tengo una serie seleccionada: 
     useEffect(() => {
-        if (!serieSelected) return;
-        console.log(serieSelected.id);
+        if (!serieSelected) return; 
         //Si existe ya una puntuación la cojo: 
         const storedRating = localStorage.getItem(`${serieSelected.id}`)
         //La guardo en el estado:

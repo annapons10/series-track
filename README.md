@@ -5,7 +5,7 @@
 ## Características
 
 - **Búsqueda de Series**: Busca cualquier serie de televisión usando la API de TMDb.
-- **Detalles de las Series**: Muestra detalles completos de la serie como sinopsis, actores, géneros, etc.
+- **Detalles de las Series**: Muestra detalles completos de la serie como sinopsis, actores, etc.
 - **Sistema de Puntuación**: Los usuarios pueden puntuar las series que han visto utilizando un sistema de estrellas.
 - **Persistencia de Puntuaciones**: Las puntuaciones de las series se guardan en el **`localStorage`** y persisten entre sesiones.
 - **Interfaz Responsiva**: La aplicación está diseñada para ser completamente responsiva y fácil de usar en dispositivos móviles y escritorios.
@@ -21,4 +21,4 @@
   - **useMemo**
   - **useCallback**
   - **useRef**
-  - **debounce** (para la búsqueda de series)
+  - **debounce** 

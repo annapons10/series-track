@@ -44,8 +44,7 @@ export function App(){
     //Confome se va escribiendo, el search va cambiando y se iría llamando al fetch cada vez para que se vaya buscando mientras se escriba (debounce).
     const hanldeChange = (event) => {
         const value = event.target.value;
-        setSearch(value);
-        console.log(value);
+        setSearch(value); 
         //Buscar series...
         debounceGetMovies(value);
     }

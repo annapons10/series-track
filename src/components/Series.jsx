@@ -1,6 +1,9 @@
 import { useState,  useEffect } from 'react'; 
 import Rating from 'react-rating';
 import { useRating } from '../hooks/useRating';
+//Icons estrellas: 
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) {
    //Estados para controlar el modal:
@@ -53,7 +56,9 @@ export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) 
 
                             {/* Las estrellas para votar. */}
                             {/* Se verá lo que hay en estado gestionado por el useEffect, cada vez que cambie, se llamará al método para actualizar el localStorage:  */}  
-                            <Rating initialRating={ rating } onChange={ handleRatingChange }/>
+                            <Rating initialRating={ rating } onChange={ handleRatingChange } 
+                             emptySymbol= { <FaRegStar  size={24}/>  }
+                             fullSymbol= { <FaStar size={24} /> }/>
                         </div> 
                         </div>
                     </div>
@@ -62,8 +67,6 @@ export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) 
                 </div> 
                 </>
             )}
-        </>
-      
-      
+        </> 
     )
 } 

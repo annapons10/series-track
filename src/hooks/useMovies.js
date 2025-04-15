@@ -19,14 +19,11 @@ export function useMovies ({ sort }) {
      
 
         try {
-            console.log("Entro a llamar a la función para buscar las series..... ");
             const series = await buscarSeries({ search });
             //Series puede contener las series o null, si series es null, guarda un vacío: 
-            console.log("tengo las series en useMoviessssss");
             setSeriesEncontradas(series ?? []);
             //Si series encontradas es vacío(null), mando un error y return:
-           if(!series){
-                console.log("estooooy aqui"); 
+           if(!series){ 
                 setErrorTitle('No se han encontrado películas con este título');
                 return;
             }

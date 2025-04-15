@@ -93,6 +93,6 @@ p{
    background-color: rgb(100, 98, 98);
 }
 
-.button-serie {
-
+.button-serie:hover {
+    transform: scale(0.9); 
 }
