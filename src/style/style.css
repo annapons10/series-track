@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-html{
+html, body {
     height: 100%;
 }
 
@@ -31,6 +31,7 @@ p{
     align-items: center;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .main {
@@ -95,4 +96,15 @@ p{
 
 .button-serie:hover {
     transform: scale(0.9); 
+}
+
+
+
+.fondo-transparent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
 }

@@ -35,7 +35,7 @@ export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) 
             { isModalOpen && serieSelected && (
                 <>
                {/* Fondo transparente: */}
-                <div></div>
+                <div className='fondo-transparent'></div>
                 <div > {/* Este es el contenedor principal */}
                     <div className="modal" style={{ display: 'block' }} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
                     <div className="modal-dialog">
