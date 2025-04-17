@@ -34,7 +34,7 @@ export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) 
             { isModalOpen && serieSelected && 
                 <Suspense fallback={(<div className='loader'>Cargando modal...</div>)}>
                     <ModalSeries setIsModalOpen={setIsModalOpen} 
-                    serieSelected={serieSelected}/ >
+                    serieSelected={serieSelected} / >
                 </Suspense>
             }
         </> 
