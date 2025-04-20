@@ -22,7 +22,7 @@ export function Series ({ seriesEncontradas, handleButtonInfo, serieSelected }) 
                             <p>{ serie.date }</p>
                             <img 
                             src={`https://image.tmdb.org/t/p/w200${serie.poster}`} 
-                            alt={`Poster de ${serie.name}`} 
+                            alt={`Poster de ${serie.name}`} loading='lazy'
                             />
                         </li>
                     </button>
