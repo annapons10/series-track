@@ -39,6 +39,14 @@ describe('useRating', () => {
         expect(Object.keys(localStorageMock.store)).toHaveLength(0);  
 
     }); 
+
+    it('Debería cargar la puntuación desde localStorage', () => {
+        //Simular que hay una puntuación guardada en localStorage:
+        window.localStorage.setItem('1', 5); 
+        let valor = window.localStorage.getItem('1');
+
+        expect(valor).toBe('5'); 
+    }); 
     
     it('Debería guardar la puntuación en localStorage al cambiarla', () => {
         //Creo una serieSelected:
