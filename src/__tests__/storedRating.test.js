@@ -1,7 +1,7 @@
 //Test vitest para verificar que se actualizan y se guardan correctamente las puntuaciones en localStorage: 
 import { renderHook, act } from '@testing-library/react'
 import { useRating } from '../hooks/useRating'; 
-import { beforeEach } from 'vitest';
+import { beforeEach, expect } from 'vitest';
 
 //Hacer un mock del localStorage:
 const localStorageMock = (() => {
@@ -15,6 +15,10 @@ const localStorageMock = (() => {
         clear: () => {
             store = {}
         },
+        //get: js lo maneja como una propiedad 
+        get store() {  // Hacemos un getter para acceder al "store" si es necesario.
+            return store;
+        },
     }
 })(); //<----La ejecuto inmediatamente para que se guarde correctamente.
 
@@ -27,9 +31,15 @@ Object.defineProperty(window, 'localStorage', {
 describe('useRating', () => {
     //Se ejecuta antes de cada prueba para que empece con vacío: 
     beforeEach(() => {
-        window.localStorage.clear()
+        window.localStorage.clear(); 
     }); 
 
+    it('Debería estar vacío al inicio', () => {
+        //Compruebo que localStorage (objeto) no tiene nada al principio:
+        expect(Object.keys(localStorageMock.store)).toHaveLength(0);  
+
+    }); 
+    
     it('Debería guardar la puntuación en localStorage al cambiarla', () => {
         //Creo una serieSelected:
         const serieSelected = { id: 1, name: 'Stranger Things'}; 
@@ -46,7 +56,7 @@ describe('useRating', () => {
             '1',4
         ); 
         
-    })
+    }); 
 
 
 })
