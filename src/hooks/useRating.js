@@ -28,4 +28,4 @@ export function useRating ({ serieSelected }) {
 
     return { rating, handleRatingChange }
 
-}
+} 
