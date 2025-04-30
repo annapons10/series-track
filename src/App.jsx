@@ -23,8 +23,7 @@ export function App(){
             console.log("entro a llamar");
             //Buscar series...
             getMovies({ search }); 
-        }, 2000),
-        //uso la dependencia de getMovies para siempre usar su versión actualizada, cuando cambia, se vuelve a crear la función (si tiene estados dentro): 
+        }, 2000), 
         []
     );
 
@@ -32,10 +31,8 @@ export function App(){
     //Método que maneja el envío del formulario, se podrían validar los campos: 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("me voy a validar y si es correcto, buscaré la película.");
         const data = new FormData(event.target);
-        const query = data.get('query');
-        console.log(`Esto es lo quiero ir a verificar... ${query} `); 
+        const query = data.get('query'); 
         const response = verificarBusqueda(query); 
         //Si la respuesta es true, se buscan las series:
         response && getMovies({ search }); 

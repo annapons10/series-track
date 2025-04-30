@@ -3,7 +3,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 
 test('Buscar una serie  y que se muestre en pantalla', async() => {
-
     //Renderizo el componente: 
     render(<App />);
 

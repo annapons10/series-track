@@ -31,7 +31,7 @@ export default function ModalSeries({ setIsModalOpen, serieSelected }) {
                         <div className={`${isClose ? 'close-modal' : 'open-modal'} modal-content modal-container`}>
                             <div className="modal-header">
                                 <h1 className="h1" >{serieSelected.name}</h1>
-                                <button type="button" className=" btn-close-modal" data-bs-dismiss="modal" aria-label="Close"
+                                <button type="button" className=" btn btn-outline-light" data-bs-dismiss="modal" aria-label="Close"
                                     onClick={() => handdleClosingModal()}> X </button>
                             </div>
                             <div className="modal-body">
